@@ -1,0 +1,32 @@
+SITE INSTITUCIONAL AEANP — VERSÃO ATUALIZADA
+=============================================
+
+Atualizações desta versão:
+- Diretoria 2025/2027 com as seis fotos enviadas e formações corrigidas.
+- Pedro Henrique Batista Calegari: Engenheiro Mecânico / Engenheiro de Segurança do Trabalho.
+- João Francisco Santos da Rocha Loures Filho: Engenheiro Agrônomo / Engenheiro de Segurança do Trabalho.
+- Gabriel Henrique Marinho da Silva: Engenheiro Civil / Engenheiro da Computação.
+- Entidade parceira corrigida para ANPEC (arquivo da logo: assets/logo-anpec.png).
+- Texto da APLA corrigido para “Associação Platinense”.
+- Cursos e Revista aparecem antes das entidades parceiras.
+- Entidades parceiras e sistema profissional foram movidos para depois da seção Fale Conosco.
+- Mantidos endereço, favicon AEANP e contador de downloads da revista.
+
+CONTADOR DA REVISTA
+O contador compartilhado requer hospedagem com PHP e permissão de escrita em downloads-revista.txt.
+Coloque o PDF da revista na pasta principal com o nome revista.pdf.
+O botão “Baixar revista em PDF” passa por baixar-revista.php e registra o total em downloads-revista.txt.
+contador-revista.php fornece o total para a página.
+O seletor local de PDF é apenas uma pré-visualização na sessão, não publica o PDF para visitantes.
+
+PUBLICAÇÃO
+Envie a pasta inteira para uma hospedagem com suporte a PHP, mantendo index.html, os arquivos PHP, downloads-revista.txt e a pasta assets.
+
+FOTOS DA DIRETORIA
+As fotos atuais já estão incluídas em assets/diretores/. Para substituir uma foto, mantenha o nome do arquivo correspondente:
+- presidente.jpg
+- vice-presidente.jpg
+- segunda-secretaria.jpg
+- primeira-secretaria.jpg
+- segundo-tesoureiro.jpg
+- primeiro-tesoureiro.jpg

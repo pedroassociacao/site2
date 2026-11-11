@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+<rect width="600" height="600" fill="#eaf1f8"/>
+<circle cx="300" cy="210" r="105" fill="#9db3c9"/>
+<path d="M95 570c12-132 92-205 205-205s193 73 205 205" fill="#9db3c9"/>
+<text x="300" y="555" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" fill="#24486b">Foto do diretor</text>
+</svg>
