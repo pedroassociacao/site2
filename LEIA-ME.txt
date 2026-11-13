@@ -1,24 +1,29 @@
-SITE INSTITUCIONAL AEANP — VERSÃO COM REVISTA TÉCNICA DE JACAREZINHO
-====================================================================
+SITE INSTITUCIONAL AEANP — VERSÃO COMPATÍVEL COM VERCEL
+======================================================
 
-Esta versão mantém o conteúdo e o layout do site recebido, com a inclusão da Revista Técnica de Jacarezinho — 1ª edição (2026) na seção “Revista”.
+Esta versão preserva o site institucional e inclui a Revista Técnica de Jacarezinho — 1ª edição (2026), com contador compatível com as funções da Vercel.
 
-REVISTA E CONTADOR DE DOWNLOADS
-- O arquivo revista.pdf já está incluído na pasta principal do site.
-- O botão “Baixar revista em PDF” direciona para baixar-revista.php.
-- Cada requisição GET ao endpoint de download é registrada no arquivo downloads-revista.txt, com bloqueio de escrita para evitar perda de contagens simultâneas.
-- contador-revista.php fornece o total atualizado à página.
-- O arquivo .htaccess bloqueia o acesso HTTP direto ao PDF e ao arquivo de contagem em servidores Apache. Em hospedagens Nginx, aplique regras equivalentes na configuração do servidor.
-- A contagem registra o início de uma solicitação de download; não é possível confirmar pelo navegador se o visitante concluiu ou salvou o arquivo.
+ARQUIVOS DA REVISTA
+- revista.pdf: arquivo da publicação incluído na raiz do projeto e servido diretamente pela Vercel como arquivo estático.
+- api/registrar-download.js: registra uma solicitação de download no Redis, quando configurado.
+- api/contador-revista.js: consulta o total de downloads registrado.
+- index.html: apresenta a publicação, o botão de download e o total informado pela API.
+
+IMPORTANTE SOBRE O CONTADOR
+O contador persistente necessita de um banco Redis compatível com Upstash. Sem essa configuração, o PDF continua disponível para download, mas o contador exibirá que está temporariamente indisponível.
+
+CONFIGURAÇÃO DO CONTADOR NA VERCEL
+1. Crie/conecte um banco Redis compatível com Upstash ao projeto Vercel.
+2. Em Settings > Environment Variables, cadastre as variáveis:
+   - UPSTASH_REDIS_REST_URL
+   - UPSTASH_REDIS_REST_TOKEN
+3. Use os valores fornecidos pelo painel do Redis/Upstash. Não compartilhe esses valores publicamente.
+4. Salve e faça uma nova implantação (Redeploy) para que as funções recebam as configurações.
+
+O contador usa a chave "aeanp:revista:downloads". A contagem registra uma solicitação de download iniciada pelo botão; não confirma que o visitante concluiu ou salvou o arquivo.
 
 PUBLICAÇÃO
-Envie o conteúdo desta pasta para uma hospedagem com suporte a PHP. Mantenha index.html, revista.pdf, baixar-revista.php, contador-revista.php, downloads-revista.txt, .htaccess e a pasta assets. O servidor precisa permitir que o PHP escreva em downloads-revista.txt. Como o PDF possui aproximadamente 184 MB, confirme que a hospedagem aceita arquivos desse tamanho e dispõe de espaço suficiente.
+Envie os arquivos e pastas deste projeto ao repositório conectado à Vercel, preservando a pasta assets e a nova pasta api. A Vercel detecta automaticamente os arquivos JavaScript dentro de api como funções.
 
 FOTOS DA DIRETORIA
-As fotos atuais permanecem em assets/diretores/. Para substituir uma foto, mantenha o nome do arquivo correspondente:
-- presidente.jpg
-- vice-presidente.jpeg
-- segunda-secretaria.jpg
-- primeira-secretaria.jpeg
-- segundo-tesoureiro.jpg
-- primeiro-tesoureiro.jpg
+As fotos permanecem em assets/diretores/. Para substituir uma foto, mantenha o nome do arquivo correspondente.

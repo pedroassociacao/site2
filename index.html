@@ -240,7 +240,7 @@
           <strong id="downloadCount">0</strong>
         </div>
         <p class="small" id="counterStatus">Total de downloads registrados no servidor.</p>
-        <p><a class="button" href="baixar-revista.php">Baixar revista em PDF ↧</a></p>
+        <p><a class="button" id="downloadRevista" href="/revista.pdf" download="revista-tecnica-jacarezinho-2026.pdf">Baixar revista em PDF ↧</a></p>
       </div>
     </section>
 
@@ -305,15 +305,21 @@
   </footer>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    fetch('contador-revista.php?acao=contagem', { cache: 'no-store' })
+    document.getElementById('downloadRevista').addEventListener('click', async function (event) {
+      event.preventDefault();
+      const link = this;
+      try { await fetch('/api/registrar-download', { method: 'POST', cache: 'no-store' }); } catch (error) {}
+      window.location.href = link.href;
+    });
+    fetch('/api/contador-revista', { cache: 'no-store' })
       .then(response => { if (!response.ok) throw new Error('Contador indisponível'); return response.json(); })
       .then(data => {
         if (typeof data.total === 'number') {
           document.getElementById('downloadCount').textContent = data.total.toLocaleString('pt-BR');
-          document.getElementById('counterStatus').textContent = 'Total de downloads registrados no servidor.';
+          document.getElementById('counterStatus').textContent = 'Total de downloads registrados.';
         }
       })
-      .catch(() => {});
+      .catch(() => { document.getElementById('counterStatus').textContent = 'Contador temporariamente indisponível.'; });
   </script>
 </body>
 </html>
