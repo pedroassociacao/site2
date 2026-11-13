@@ -233,20 +233,14 @@
     <section id="revista">
       <div class="publication">
         <div class="section-label" style="color:#a8e3ff">Publicações</div>
-        <h2>Revista da AEANP</h2>
-        <p>Consulte a revista da associação em PDF. Quando a edição estiver disponível, selecione o arquivo abaixo para adicioná-lo à lista de publicações exibida nesta página.</p>
+        <h2>Revista Técnica de Jacarezinho</h2>
+        <p>1ª edição • 2026. Acesse a publicação da Associação dos Engenheiros e Agrônomos do Norte Pioneiro em PDF.</p>
         <div class="download-counter">
           <span>Downloads da revista</span>
-          <strong id="downloadCount">Contador disponível após publicar o PDF no servidor</strong>
+          <strong id="downloadCount">0</strong>
         </div>
-        <p class="small" id="counterStatus">O contador compartilhado será ativado quando o arquivo revista.pdf e os scripts PHP forem publicados em uma hospedagem com suporte a PHP.</p>
+        <p class="small" id="counterStatus">Total de downloads registrados no servidor.</p>
         <p><a class="button" href="baixar-revista.php">Baixar revista em PDF ↧</a></p>
-        <div class="upload-area">
-          <label for="pdfInput"><strong>Pré-visualizar revista em PDF (arquivo local)</strong></label>
-          <input id="pdfInput" type="file" accept="application/pdf,.pdf">
-          <div class="small">O arquivo escolhido fica disponível nesta página enquanto ela estiver aberta. Para publicar a revista para todos os visitantes, o PDF deverá ser enviado junto com o site para a hospedagem.</div>
-          <div id="pdfList" class="pdf-list" aria-live="polite"></div>
-        </div>
       </div>
     </section>
 
@@ -320,46 +314,6 @@
         }
       })
       .catch(() => {});
-    const input = document.getElementById('pdfInput');
-    const list = document.getElementById('pdfList');
-    input.addEventListener('change', () => {
-      const file = input.files && input.files[0];
-      if (!file) return;
-      if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
-        alert('Selecione um arquivo PDF.');
-        input.value = '';
-        return;
-      }
-      const url = URL.createObjectURL(file);
-      const item = document.createElement('div');
-      item.className = 'pdf-item';
-      const info = document.createElement('div');
-      const title = document.createElement('strong');
-      title.textContent = file.name;
-      const size = document.createElement('div');
-      size.style.cssText = 'font-size:.85rem;color:#617184';
-      size.textContent = `${(file.size / (1024 * 1024)).toFixed(2)} MB`;
-      info.append(title, size);
-      const actions = document.createElement('div');
-      actions.style.cssText = 'display:flex;gap:10px;align-items:center';
-      const link = document.createElement('a');
-      link.href = url;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      link.textContent = 'Abrir revista ↗';
-      const remove = document.createElement('button');
-      remove.className = 'remove-btn';
-      remove.type = 'button';
-      remove.textContent = 'Remover';
-      remove.addEventListener('click', () => {
-        URL.revokeObjectURL(url);
-        item.remove();
-      });
-      actions.append(link, remove);
-      item.append(info, actions);
-      list.prepend(item);
-      input.value = '';
-    });
   </script>
 </body>
 </html>

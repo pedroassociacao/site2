@@ -1,32 +1,24 @@
-SITE INSTITUCIONAL AEANP — VERSÃO ATUALIZADA
-=============================================
+SITE INSTITUCIONAL AEANP — VERSÃO COM REVISTA TÉCNICA DE JACAREZINHO
+====================================================================
 
-Atualizações desta versão:
-- Diretoria 2025/2027 com as seis fotos enviadas e formações corrigidas.
-- Pedro Henrique Batista Calegari: Engenheiro Mecânico / Engenheiro de Segurança do Trabalho.
-- João Francisco Santos da Rocha Loures Filho: Engenheiro Agrônomo / Engenheiro de Segurança do Trabalho.
-- Gabriel Henrique Marinho da Silva: Engenheiro Civil / Engenheiro da Computação.
-- Entidade parceira corrigida para ANPEC (arquivo da logo: assets/logo-anpec.png).
-- Texto da APLA corrigido para “Associação Platinense”.
-- Cursos e Revista aparecem antes das entidades parceiras.
-- Entidades parceiras e sistema profissional foram movidos para depois da seção Fale Conosco.
-- Mantidos endereço, favicon AEANP e contador de downloads da revista.
+Esta versão mantém o conteúdo e o layout do site recebido, com a inclusão da Revista Técnica de Jacarezinho — 1ª edição (2026) na seção “Revista”.
 
-CONTADOR DA REVISTA
-O contador compartilhado requer hospedagem com PHP e permissão de escrita em downloads-revista.txt.
-Coloque o PDF da revista na pasta principal com o nome revista.pdf.
-O botão “Baixar revista em PDF” passa por baixar-revista.php e registra o total em downloads-revista.txt.
-contador-revista.php fornece o total para a página.
-O seletor local de PDF é apenas uma pré-visualização na sessão, não publica o PDF para visitantes.
+REVISTA E CONTADOR DE DOWNLOADS
+- O arquivo revista.pdf já está incluído na pasta principal do site.
+- O botão “Baixar revista em PDF” direciona para baixar-revista.php.
+- Cada requisição GET ao endpoint de download é registrada no arquivo downloads-revista.txt, com bloqueio de escrita para evitar perda de contagens simultâneas.
+- contador-revista.php fornece o total atualizado à página.
+- O arquivo .htaccess bloqueia o acesso HTTP direto ao PDF e ao arquivo de contagem em servidores Apache. Em hospedagens Nginx, aplique regras equivalentes na configuração do servidor.
+- A contagem registra o início de uma solicitação de download; não é possível confirmar pelo navegador se o visitante concluiu ou salvou o arquivo.
 
 PUBLICAÇÃO
-Envie a pasta inteira para uma hospedagem com suporte a PHP, mantendo index.html, os arquivos PHP, downloads-revista.txt e a pasta assets.
+Envie o conteúdo desta pasta para uma hospedagem com suporte a PHP. Mantenha index.html, revista.pdf, baixar-revista.php, contador-revista.php, downloads-revista.txt, .htaccess e a pasta assets. O servidor precisa permitir que o PHP escreva em downloads-revista.txt. Como o PDF possui aproximadamente 184 MB, confirme que a hospedagem aceita arquivos desse tamanho e dispõe de espaço suficiente.
 
 FOTOS DA DIRETORIA
-As fotos atuais já estão incluídas em assets/diretores/. Para substituir uma foto, mantenha o nome do arquivo correspondente:
+As fotos atuais permanecem em assets/diretores/. Para substituir uma foto, mantenha o nome do arquivo correspondente:
 - presidente.jpg
-- vice-presidente.jpg
+- vice-presidente.jpeg
 - segunda-secretaria.jpg
-- primeira-secretaria.jpg
+- primeira-secretaria.jpeg
 - segundo-tesoureiro.jpg
 - primeiro-tesoureiro.jpg
